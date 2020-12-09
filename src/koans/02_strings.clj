@@ -3,68 +3,69 @@
             [clojure.string :as string]))
 
 (meditations
-  "A string is nothing more than text surrounded by double quotes"
-  (= __ "hello")
 
-  "But double quotes are just magic on top of something deeper"
-  (= __ (str 'world))
+ "A string is nothing more than text surrounded by double quotes"
+ (= "hello" "hello")
 
-  "You can do more than create strings, you can put them together"
-  (= "Cool right?" (str __ __))
+ "But double quotes are just magic on top of something deeper"
+ (= "world" (str 'world))
 
-  "You can even get certain characters"
-  (= \C (get "Characters" __))
+ "You can do more than create strings, you can put them together"
+ (= "Cool right?" (str "Cool " "right?"))
 
-  "Or even count the characters"
-  (= __ (count "Hello World"))
+ "You can even get certain characters"
+ (= \C (get "Characters" 0))
 
-  "But strings and characters are not the same"
-  (= __ (= \c "c"))
+ "Or even count the characters"
+ (= 11 (count "Hello World"))
 
-  "What if you only wanted to get part of a string?"
-  (= "World" (subs "Hello World" __ __))
+ "But strings and characters are not the same"
+ (= false (= \c "c"))
 
-  "How about joining together elements in a list?"
-  (= __ (string/join '(1 2 3)))
+ "What if you only wanted to get part of a string?"
+ (= "World" (subs "Hello World" 6 11))
 
-  "What if you wanted to separate them out?"
-  (= "1, 2, 3" (string/join __ '(1 2 3)))
+ "How about joining together elements in a list?"
+ (= "123" (string/join '(1 2 3)))
 
-  "Maybe you want to separate out all your lines"
-  (= [__ __ __] (string/split-lines "1\n2\n3"))
+ "What if you wanted to separate them out?"
+ (= "1, 2, 3" (string/join ", " '(1 2 3)))
 
-  "You may want to make sure your words are backwards"
-  (= __ (string/reverse "hello"))
+ "Maybe you want to separate out all your lines"
+ (= ["1" "2" "3"] (string/split-lines "1\n2\n3"))
 
-  "Maybe you want to find the index of the first occurrence of a substring"
-  (= 0 (string/index-of "hello world" __))
+ "You may want to make sure your words are backwards"
+ (= "olleh" (string/reverse "hello"))
 
-  "Or maybe the last index of the same"
-  (= __ (string/last-index-of "hello world, hello" "hello"))
+ "Maybe you want to find the index of the first occurrence of a substring"
+ (= 0 (string/index-of "hello world" "hello"))
 
-  "But when something doesn't exist, nothing is found"
-  (= __ (string/index-of "hello world" "bob"))
+ "Or maybe the last index of the same"
+ (= 13 (string/last-index-of "hello world, hello" "hello"))
 
-  "Sometimes you don't want whitespace cluttering the front and back"
-  (= __ (string/trim "  \nhello world \t \n"))
+ "But when something doesn't exist, nothing is found"
+ (= nil (string/index-of "hello world" "bob"))
 
-  "You can check if something is a char"
-  (= __ (char? \c))
+ "Sometimes you don't want whitespace cluttering the front and back"
+ (= "hello world" (string/trim "  \nhello world \t \n"))
 
-  "But it may not be"
-  (= __ (char? "a"))
+ "You can check if something is a char"
+ (= true (char? \c))
 
-  "But chars aren't strings"
-  (= __ (string? \b))
+ "But it may not be"
+ (= false (char? "a"))
 
-  "Strings are strings"
-  (= true (string? __))
+ "But chars aren't strings"
+ (= false (string? \b))
 
-  "Some strings may be blank"
-  (= __ (string/blank? ""))
+ "Strings are strings"
+ (= true (string? "orice"))
 
-  "Even if at first glance they aren't"
-  (= __ (string/blank? " \n \t  "))
+ "Some strings may be blank"
+ (= true (string/blank? ""))
 
-  "However, most strings aren't blank"
-  (= __ (string/blank? "hello?\nare you out there?")))
+ "Even if at first glance they aren't"
+ (= true (string/blank? " \n \t  "))
+
+ "However, most strings aren't blank"
+ (= false (string/blank? "hello?\nare you out there?")))
