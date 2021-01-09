@@ -205,3 +205,5 @@ sftp-config.json
 .vagrant/
 ubuntu-xenial-16.04-cloudimg-console.log
 .calva/
+.clj-kondo
+.lsp
